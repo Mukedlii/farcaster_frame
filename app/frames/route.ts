@@ -16,7 +16,7 @@ const initialState: GameState = {
 
 const frames = createFrames<GameState>({
   basePath: "/frames",
-  imagesRoute: "/frames",
+  imagesRoute: "/",
   initialState,
   stateSigningSecret: process.env.FRAME_STATE_SECRET,
 });
