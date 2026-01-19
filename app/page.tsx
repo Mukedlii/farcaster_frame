@@ -16,10 +16,9 @@ export default function HomePage() {
         textAlign: "center",
       }}
     >
-      <div style={{ fontSize: "28px", fontWeight: 700 }}>Farcaster Frame elérhető</div>
+      <div style={{ fontSize: "28px", fontWeight: 700 }}>Farcaster Frame is live</div>
       <p style={{ maxWidth: "520px", fontSize: "16px", color: "#cbd5f5" }}>
-        A keret végpont a /frames útvonalon érhető el. Nyisd meg Farcasterben vagy teszteld
-        böngészőből.
+        The frame endpoint is available at /frames. Open it in Farcaster or test it in a browser.
       </p>
       <Link
         href="/frames"
@@ -32,7 +31,7 @@ export default function HomePage() {
           textDecoration: "none",
         }}
       >
-        Ugrás a /frames oldalra
+        Go to /frames
       </Link>
     </main>
   );

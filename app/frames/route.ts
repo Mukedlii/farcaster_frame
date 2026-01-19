@@ -32,7 +32,7 @@ const frames = createFrames<GameState>({
   stateSigningSecret: process.env.FRAME_STATE_SECRET,
 });
 
-const formatPoints = (points: number) => `${points.toLocaleString("hu-HU")} pont`;
+const formatPoints = (points: number) => `${points.toLocaleString("en-US")} pts`;
 
 const todayKey = () => new Date().toISOString().split("T")[0];
 
@@ -46,7 +46,7 @@ const renderImage = (state: GameState) => {
   const accentSoft = "#fb7185";
   const accentDark = "#be123c";
   const gridColor = "rgba(148, 163, 184, 0.15)";
-  const boostLabel = isBoostActive(state) ? "2x BOOST AKTÍV" : "BOOST INAKTÍV";
+  const boostLabel = isBoostActive(state) ? "2x BOOST ACTIVE" : "BOOST INACTIVE";
   const status = state.statusMessage ?? "";
 
   return (
@@ -75,11 +75,11 @@ const renderImage = (state: GameState) => {
       />
       <div style={{ position: "relative", zIndex: 1 }}>
         <div style={{ fontSize: 28, letterSpacing: 1, fontWeight: 700 }}>
-          SATOSHI PONT HÁLÓ
+          SATOSHI POINT GRID
         </div>
         <div style={{ display: "flex", gap: 24, marginTop: 12 }}>
           <div>
-            <div style={{ fontSize: 12, color: "#94a3b8" }}>Egyenleg</div>
+            <div style={{ fontSize: 12, color: "#94a3b8" }}>Balance</div>
             <div style={{ fontSize: 26, fontWeight: 700 }}>
               {formatPoints(state.points)}
             </div>
@@ -102,23 +102,23 @@ const renderImage = (state: GameState) => {
       <div style={{ position: "relative", zIndex: 1 }}>
         {state.page === "home" && (
           <div style={{ display: "grid", gap: 12 }}>
-            <div style={{ fontSize: 20, fontWeight: 600 }}>Küldetés központ</div>
+            <div style={{ fontSize: 20, fontWeight: 600 }}>Mission Control</div>
             <div style={{ color: "#cbd5f5", fontSize: 14 }}>
-              Gyűjts pontokat napi akciókkal, majd tippelj a BTC mozgására. A tranzakciós logika
-              Base hálózaton zajlik, minimális fee-vel.
+              Collect points with daily actions, then predict BTC movements. Transactions run on
+              Base with minimal fees.
             </div>
             <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
               <div>
-                <div style={{ fontSize: 12, color: "#94a3b8" }}>Napi login</div>
-                <div style={{ fontSize: 18 }}>+1 pont</div>
+                <div style={{ fontSize: 12, color: "#94a3b8" }}>Daily login</div>
+                <div style={{ fontSize: 18 }}>+1 pt</div>
               </div>
               <div>
-                <div style={{ fontSize: 12, color: "#94a3b8" }}>Short/Long nyeremény</div>
-                <div style={{ fontSize: 18 }}>+10 pont</div>
+                <div style={{ fontSize: 12, color: "#94a3b8" }}>Short/Long win</div>
+                <div style={{ fontSize: 18 }}>+10 pts</div>
               </div>
               <div>
                 <div style={{ fontSize: 12, color: "#94a3b8" }}>Airdrop pool</div>
-                <div style={{ fontSize: 18 }}>70% visszaosztás</div>
+                <div style={{ fontSize: 18 }}>70% redistributed</div>
               </div>
             </div>
           </div>
@@ -126,35 +126,35 @@ const renderImage = (state: GameState) => {
 
         {state.page === "tasks" && (
           <div style={{ display: "grid", gap: 10 }}>
-            <div style={{ fontSize: 20, fontWeight: 600 }}>Feladatok</div>
+            <div style={{ fontSize: 20, fontWeight: 600 }}>Tasks</div>
             <div style={{ fontSize: 14, color: "#cbd5f5" }}>
-              Kövesd a profilokat és recastolj naponta. Ezek adják az alap pontokat.
+              Follow the profiles and recast daily. These actions grant the base points.
             </div>
             <div style={{ display: "grid", gap: 8, marginTop: 6 }}>
-              <div>✅ Farcaster follow: {state.followedFarcaster ? "kész" : "+50 pont"}</div>
-              <div>✅ Twitter follow: {state.followedTwitter ? "kész" : "+25 pont"}</div>
-              <div>🔁 Napi recast: +10 pont</div>
+              <div>✅ Farcaster follow: {state.followedFarcaster ? "done" : "+50 pts"}</div>
+              <div>✅ Twitter follow: {state.followedTwitter ? "done" : "+25 pts"}</div>
+              <div>🔁 Daily recast: +10 pts</div>
             </div>
           </div>
         )}
 
         {state.page === "daily" && (
           <div style={{ display: "grid", gap: 10 }}>
-            <div style={{ fontSize: 20, fontWeight: 600 }}>Napi kihívások</div>
+            <div style={{ fontSize: 20, fontWeight: 600 }}>Daily challenges</div>
             <div style={{ fontSize: 14, color: "#cbd5f5" }}>
-              Napi check-in, on-chain bejelentkezés és a 9.999-es panic kihívás vár rád.
+              Daily check-in, an on-chain check-in, and the 9,999 panic challenge await you.
             </div>
             <div style={{ display: "flex", gap: 16, marginTop: 6 }}>
               <div>
-                <div style={{ fontSize: 12, color: "#94a3b8" }}>Napi on-chain</div>
+                <div style={{ fontSize: 12, color: "#94a3b8" }}>Daily on-chain</div>
                 <div style={{ fontSize: 18 }}>Mini fee</div>
               </div>
               <div>
-                <div style={{ fontSize: 12, color: "#94a3b8" }}>Panic gomb</div>
-                <div style={{ fontSize: 18, color: accent }}>9.999 próba</div>
+                <div style={{ fontSize: 12, color: "#94a3b8" }}>Panic button</div>
+                <div style={{ fontSize: 18, color: accent }}>9,999 try</div>
               </div>
               <div>
-                <div style={{ fontSize: 12, color: "#94a3b8" }}>Siker</div>
+                <div style={{ fontSize: 12, color: "#94a3b8" }}>Success</div>
                 <div style={{ fontSize: 18 }}>2x boost</div>
               </div>
             </div>
@@ -165,19 +165,19 @@ const renderImage = (state: GameState) => {
           <div style={{ display: "grid", gap: 10 }}>
             <div style={{ fontSize: 20, fontWeight: 600 }}>BTC short / long</div>
             <div style={{ fontSize: 14, color: "#cbd5f5" }}>
-              Tippeld meg, hogy az ár fel vagy le megy a következő lépésben.
+              Predict whether the price moves up or down on the next step.
             </div>
             <div style={{ display: "flex", gap: 24, marginTop: 6 }}>
               <div>
-                <div style={{ fontSize: 12, color: "#94a3b8" }}>Ár</div>
+                <div style={{ fontSize: 12, color: "#94a3b8" }}>Price</div>
                 <div style={{ fontSize: 22, fontWeight: 700 }}>
                   ${state.btcPrice.toLocaleString("en-US")}
                 </div>
               </div>
               <div>
-                <div style={{ fontSize: 12, color: "#94a3b8" }}>Legutóbbi mozgás</div>
+                <div style={{ fontSize: 12, color: "#94a3b8" }}>Last move</div>
                 <div style={{ fontSize: 18 }}>
-                  {state.lastMove ? (state.lastMove === "up" ? "⬆️ emelkedés" : "⬇️ esés") : "-"}
+                  {state.lastMove ? (state.lastMove === "up" ? "⬆️ up" : "⬇️ down") : "-"}
                 </div>
               </div>
             </div>
@@ -221,7 +221,7 @@ const renderImage = (state: GameState) => {
           </div>
         )}
         <div style={{ fontSize: 12, color: "#94a3b8" }}>
-          Oldal: {state.page.toUpperCase()}
+          Page: {state.page.toUpperCase()}
         </div>
       </div>
     </div>
@@ -241,9 +241,9 @@ const handler = frames(async (ctx) => {
       nextState.lastTxCheckIn = today;
       const boosted = applyBoost(nextState, 1);
       nextState.points += boosted;
-      nextState.statusMessage = `On-chain check-in jóváírva (+${boosted} pont)`;
+      nextState.statusMessage = `On-chain check-in credited (+${boosted} pts)`;
     } else {
-      nextState.statusMessage = "A mai on-chain check-in már rögzítve van.";
+      nextState.statusMessage = "Today's on-chain check-in is already recorded.";
     }
   }
 
@@ -252,7 +252,7 @@ const handler = frames(async (ctx) => {
     nextState = {
       ...nextState,
       points: nextState.points + boosted,
-      statusMessage: `${message} (+${boosted} pont)`,
+      statusMessage: `${message} (+${boosted} pts)`,
     };
   };
 
@@ -261,31 +261,31 @@ const handler = frames(async (ctx) => {
       if (pressed === 1) nextState.page = "tasks";
       if (pressed === 2) nextState.page = "daily";
       if (pressed === 3) nextState.page = "trade";
-      if (pressed === 4) nextState.statusMessage = "Készen állsz a következő körre.";
+      if (pressed === 4) nextState.statusMessage = "Ready for the next round.";
     } else if (nextState.page === "tasks") {
       if (pressed === 1) {
         if (nextState.followedFarcaster) {
-          nextState.statusMessage = "Farcaster follow már teljesítve.";
+          nextState.statusMessage = "Farcaster follow already completed.";
         } else {
           nextState.followedFarcaster = true;
-          awardPoints(50, "Farcaster follow jóváírva");
+          awardPoints(50, "Farcaster follow credited");
         }
       }
       if (pressed === 2) {
         if (nextState.followedTwitter) {
-          nextState.statusMessage = "Twitter follow már teljesítve.";
+          nextState.statusMessage = "Twitter follow already completed.";
         } else {
           nextState.followedTwitter = true;
-          awardPoints(25, "Twitter follow jóváírva");
+          awardPoints(25, "Twitter follow credited");
         }
       }
       if (pressed === 3) {
         const today = todayKey();
         if (nextState.lastRecast === today) {
-          nextState.statusMessage = "Mai recast már megvan.";
+          nextState.statusMessage = "Today's recast is already done.";
         } else {
           nextState.lastRecast = today;
-          awardPoints(10, "Recast sikeres");
+          awardPoints(10, "Recast successful");
         }
       }
       if (pressed === 4) nextState.page = "home";
@@ -293,22 +293,22 @@ const handler = frames(async (ctx) => {
       if (pressed === 1) {
         const today = todayKey();
         if (nextState.lastCheckIn === today) {
-          nextState.statusMessage = "Ma már bejelentkeztél.";
+          nextState.statusMessage = "You already checked in today.";
         } else {
           nextState.lastCheckIn = today;
-          awardPoints(1, "Napi bejelentkezés" );
+          awardPoints(1, "Daily check-in");
         }
       }
       if (pressed === 2) {
-        nextState.statusMessage = "On-chain check-in tranzakció indítva.";
+        nextState.statusMessage = "On-chain check-in transaction started.";
       }
       if (pressed === 3) {
         const success = Math.random() < 0.15;
         if (success) {
           nextState.boostUntil = todayKey();
-          awardPoints(15, "Megállítottad 9.999-nél! 2x boost aktiválva");
+          awardPoints(15, "You stopped at 9,999! 2x boost activated");
         } else {
-          nextState.statusMessage = "Most nem sikerült. Próbáld újra holnap!";
+          nextState.statusMessage = "Not this time. Try again tomorrow!";
         }
       }
       if (pressed === 4) nextState.page = "home";
@@ -324,18 +324,18 @@ const handler = frames(async (ctx) => {
         );
         nextState.lastMove = movement;
         if (prediction === movement) {
-          awardPoints(10, prediction === "up" ? "Long nyert" : "Short nyert");
-          nextState.lastResult = "Talált";
+          awardPoints(10, prediction === "up" ? "Long win" : "Short win");
+          nextState.lastResult = "Hit";
         } else {
-          nextState.statusMessage = "Nem jött be a tipp. Nincs pont.";
-          nextState.lastResult = "Mellé";
+          nextState.statusMessage = "Prediction missed. No points.";
+          nextState.lastResult = "Miss";
         }
       }
       if (pressed === 3) {
         nextState.btcPrice = 62000;
         nextState.lastMove = undefined;
         nextState.lastResult = undefined;
-        nextState.statusMessage = "Chart visszaállítva.";
+        nextState.statusMessage = "Chart reset.";
       }
       if (pressed === 4) nextState.page = "home";
     }
@@ -348,16 +348,16 @@ const handler = frames(async (ctx) => {
       if (nextState.page === "home") {
         return [
           <Button key="tasks" action="post">
-            Feladatok
+            Tasks
           </Button>,
           <Button key="daily" action="post">
-            Napi mód
+            Daily mode
           </Button>,
           <Button key="trade" action="post">
             BTC short/long
           </Button>,
           <Button key="status" action="post">
-            Állapot
+            Status
           </Button>,
         ];
       }
@@ -370,17 +370,17 @@ const handler = frames(async (ctx) => {
             Twitter follow
           </Button>,
           <Button key="recast" action="post">
-            Napi recast
+            Daily recast
           </Button>,
           <Button key="back" action="post">
-            Vissza
+            Back
           </Button>,
         ];
       }
       if (nextState.page === "daily") {
         return [
           <Button key="checkin" action="post">
-            Napi check-in
+            Daily check-in
           </Button>,
           <Button key="tx-checkin" action="tx" target="/frames/tx" post_url="/frames">
             On-chain check-in
@@ -389,7 +389,7 @@ const handler = frames(async (ctx) => {
             Panic 9.999
           </Button>,
           <Button key="back" action="post">
-            Vissza
+            Back
           </Button>,
         ];
       }
@@ -404,7 +404,7 @@ const handler = frames(async (ctx) => {
           Reset chart
         </Button>,
         <Button key="back" action="post">
-          Vissza
+          Back
         </Button>,
       ];
     })(),
