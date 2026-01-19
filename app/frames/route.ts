@@ -1,5 +1,7 @@
 import { createFrames } from "frames.js/next";
 
+export const runtime = "edge";
+
 import type { GameState } from "./types";
 import { applyBoost, todayKey } from "./state";
 import { renderButtons, renderImage } from "./ui";
