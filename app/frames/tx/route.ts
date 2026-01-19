@@ -1,6 +1,8 @@
 import { transaction } from "frames.js/core";
 import type { NextRequest } from "next/server";
 
+export const runtime = "edge";
+
 const TREASURY_ADDRESS = "0xf5fF2Cb593bcd029fd4Aae049109a9Cc205D5baF" as const;
 const MIN_FEE_WEI = "1000000000000";
 
