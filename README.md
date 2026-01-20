@@ -78,6 +78,10 @@ deploy and extend.
   `app/frames/route.tsx` with your actual Farcaster and Twitter
   usernames. You can also tweak the point values and add or remove
   tasks as desired.
+* **Cover artwork:** The cover image is served from `/frames/cover`
+  (generated from an embedded PNG payload) so you can use that URL as
+  the preview/cover image when configuring your Farcaster frame URL or
+  metadata.
 * **Persistent leaderboard:** For a persistent leaderboard across
   deployments, integrate a storage layer such as Vercel KV,
   Upstash Redis or a Postgres database. Replace the `globalScores`
